@@ -10,53 +10,74 @@ let characters = ["Skelly", "Edith", "Burt", "Emily", "Cast"];
 
 const create_small_action = (txt) => {
   let ele = document.createElement("div");
+  ele.classList.add("small_action");
   let h5 = document.createElement("h5");
+  let btn = document.createElement("button");
+  btn.addEventListener("click", () => {
+    remove(idx);
+  });
+  btn.innerText = "X";
   h5.innerHTML = `* ${txt} *`;
   ele.appendChild(h5);
-  the_scene_arr.push(ele);
+  ele.appendChild(btn);
+  let idx = the_scene_arr.length;
+  the_scene_arr.push({ id: idx, e: ele });
   input_field = "";
 };
 
 const create_big_action = (txt) => {
   let ele = document.createElement("div");
+  ele.classList.add("big_action");
   let title = document.createElement("h3");
   let mainText = document.createElement("h3");
   let end = document.createElement("h3");
+  let btn = document.createElement("button");
+  btn.addEventListener("click", () => {
+    remove(idx);
+  });
+  btn.innerText = "X";
   title.innerHTML = ` -----------{
-        <span class="big_action">Big Action</span> }--------------`;
+        <span class="big_action_span">Big Action</span> }--------------`;
   mainText.innerHTML = ` ${txt} `;
   end.innerHTML = `---------------------------------`;
   ele.appendChild(title);
   ele.appendChild(mainText);
   ele.appendChild(end);
+  ele.appendChild(btn);
 
-  the_scene_arr.push(ele);
+  let idx = the_scene_arr.length;
+  the_scene_arr.push({ id: idx, e: ele });
   input_field = "";
 };
 
 const create_Dio = (char, txt) => {
   let ele = document.createElement("div");
   let btn = document.createElement("button");
+  let idx = the_scene_arr.length;
   btn.innerText = "X";
+  btn.addEventListener("click", () => {
+    remove(idx);
+  });
   btn.classList.add("dio_btn");
   ele.classList.add("dio_box");
   let bdy = document.createElement("h4");
   bdy.innerHTML = `[ ${char} ] : ${txt}`;
   ele.appendChild(bdy);
   ele.appendChild(btn);
-  the_scene_arr.push(ele);
+  the_scene_arr.push({ id: idx, e: ele });
   input_field = "";
 };
 
-const remove = () => {
-  the_scene_arr.pop();
-  scene_holder.removeChild(scene_holder.lastChild);
+const remove = (id) => {
+  let ele = the_scene_arr.find((ele) => ele.id === id);
+  the_scene_arr.splice(ele.id);
+  console.log(ele);
+  scene_holder.removeChild(ele.e);
   is_btn_active = false;
   update();
 };
 
 const handleChange = (e) => {
-  console.log("E:", e.target.value);
   input_field = e.target.value;
 };
 
@@ -71,6 +92,7 @@ const new_dio = () => {
   let sel = document.createElement("select");
   let inpt = document.createElement("input");
   let fin = document.createElement("button");
+  let idx = the_scene_arr.length;
   inpt.onchange = (e) => handleChange(e);
 
   characters.forEach((ele) => {
@@ -80,7 +102,7 @@ const new_dio = () => {
   });
   fin.innerText = "finish";
   fin.addEventListener("click", () => {
-    remove();
+    remove(idx);
     create_Dio(sel.value, input_field);
     update();
   });
@@ -88,7 +110,7 @@ const new_dio = () => {
   ele.appendChild(inpt);
   ele.appendChild(fin);
 
-  the_scene_arr.push(ele);
+  the_scene_arr.push({ id: idx, e: ele });
 
   update();
 };
@@ -100,19 +122,20 @@ const new_Big_action = () => {
     is_btn_active = true;
   }
   let ele = document.createElement("div");
+  let idx = the_scene_arr.length;
   ele.classList.add("boxy");
   let inpt = document.createElement("input");
   inpt.onchange = (e) => handleChange(e);
   let fin = document.createElement("button");
   fin.innerText = "finish";
   fin.addEventListener("click", () => {
-    remove();
+    remove(idx);
     create_big_action(input_field);
     update();
   });
   ele.appendChild(inpt);
   ele.appendChild(fin);
-  the_scene_arr.push(ele);
+  the_scene_arr.push({ id: idx, e: ele });
   update();
 };
 
@@ -123,25 +146,26 @@ const new_small_action = () => {
     is_btn_active = true;
   }
   let ele = document.createElement("div");
+  let idx = the_scene_arr.length;
   ele.classList.add("boxy");
   let inpt = document.createElement("input");
   inpt.onchange = (e) => handleChange(e);
   let fin = document.createElement("button");
   fin.innerText = "finish";
   fin.addEventListener("click", () => {
-    remove();
+    remove(idx);
     create_small_action(input_field);
     update();
   });
   ele.appendChild(inpt);
   ele.appendChild(fin);
-  the_scene_arr.push(ele);
+  the_scene_arr.push({ id: idx, e: ele });
   update();
 };
 
 const update = () => {
   the_scene_arr.forEach((ele) => {
-    scene_holder.appendChild(ele);
+    scene_holder.appendChild(ele.e);
   });
 };
 

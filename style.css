@@ -78,7 +78,46 @@ body {
 }
 
 .big_action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.big_action button {
+  width: 25px;
+  border: 1px solid #663733;
+  color: #4396bf;
+  background-color: #663733;
+  border-radius: 5px;
+}
+
+.big_action button:active {
   color: #663733;
+  background-color: #4396bf;
+}
+
+.big_action_span {
+  color: #663733;
+}
+
+.small_action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.small_action button {
+  border: 1px solid #663733;
+  color: #4396bf;
+  background-color: #663733;
+  border-radius: 5px;
+}
+
+.small_action button:active {
+  color: #663733;
+  background-color: #4396bf;
 }
 
 .dio_box {
