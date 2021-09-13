@@ -1,0 +1,115 @@
+/* main: #212133 
+light: #4396bf 
+dark: #663733  */
+
+html {
+  background: rgb(38, 30, 48);
+}
+
+body {
+  background-color: #212133;
+  color: #4396bf;
+  height: 800px;
+  width: 940px;
+}
+
+.holder {
+  display: flex;
+  flex-direction: row;
+  height: 800px;
+  width: 940px;
+}
+
+.holder h3 {
+  text-align: center;
+}
+
+.main {
+  width: 700px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.scene_holder {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid black;
+  padding: 5px;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+.btn_holder_sect {
+  width: 120px;
+  border: 2px solid black;
+}
+
+.btn_holder button {
+  margin: 5px;
+  /* border: none; */
+  border: 1px solid #663733;
+  color: #4396bf;
+  background-color: #663733;
+  border-radius: 5px;
+}
+
+.btn_holder button:active {
+  color: #663733;
+  background-color: #4396bf;
+}
+
+.btn_holder {
+  border-top: 2px solid black;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.prop_holder {
+  width: 120px;
+  border: 2px solid black;
+}
+
+.props {
+  border-top: 2px solid black;
+}
+
+.big_action {
+  color: #663733;
+}
+
+.dio_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dio_box button {
+  align-content: flex-end;
+  border: 1px solid #663733;
+  color: #4396bf;
+  background-color: #663733;
+  border-radius: 5px;
+}
+.dio_box button:active {
+  color: #663733;
+  background-color: #4396bf;
+}
+
+.boxy {
+  width: 97%;
+  /* border: 2px solid red; */
+  background-color: black;
+  margin: 0 auto;
+  position: absolute;
+  align-self: center;
+  bottom: 0;
+  /* right: 0; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
